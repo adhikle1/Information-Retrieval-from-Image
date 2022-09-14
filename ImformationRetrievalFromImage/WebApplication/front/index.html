@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+  <title>Document scanner</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="neato-header">
+      <h2>Project-</h2>
+      <h1>Document Extraction & Processing</h1>
+    </div>
+
+    <div class="row">
+      <div class="item  col-xs-4 col-lg-4">
+
+        <div class="panel panel-success">
+          <div class="panel-heading">Uploaded Image View From S3 Bucket</div>
+          <div class="panel-body">
+            <div class="panel-data">
+              <i class='far fa-address-card' style='font-size:36px'></i>
+              <img class="rounded-circle z-depth-2" alt="100x100" id="file-ip-1-preview" style="height: 10%;width: 100%;"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAclBMVEUAAAD///+bm5thYWHT09PNzc03NzeGhoaxsbHs7Oynp6dGRkaqqqrx8fFnZ2fY2Ng7Ozvf3990dHTl5eU+Pj6RkZEKCgq5ubl/f39tbW0SEhIkJCTCwsK9vb1UVFRcXFwdHR2WlpYvLy9JSUmBgYEYGBh5g78XAAAE3klEQVR4nO2d63aqMBBGRQVR8Valauulntr3f8XTihcQSCaRwHys2X+7ms5uEJKZIXa8ttNpOgDniCE+YoiPGOIjhviIIT5iiI8Y4iOG+IghPmKIjxjiI4b4iCE+YoiPGOIjhviIIT5PhrN11AVnvyg39N867WDrFxr2g6YDq5DAzxuemw6qYjbPhuOmI6qccdawfYJ3xcSwLbeYLNuH4brpWByxvxs2HYkrPm6Go6YjcUZ0NfzXdCDOmCeGi6bjcMjwYhg1HYZD1hfDTdNhOCS+GPaaDsMh29Yb9sQQHjHERwzxEUN8xBAfMcRHDPERQ3zEEB8xxEcM8RFDfMSwmOAwPX5/uYineswNV6Nbx9Fkh1D8NzXcLrMNVeGPw+Aqwcxw/tQw9sfJaXyvY2QY5/1+WXy4DfFFTAzXhYK/n0fW7XAGhvsSQeaNDnTDbrmgN3Eepz1kw55C0PN82l+bB66Zf1obTpSG3pZkqB6jEnJtJVTDk2Zg2nVag2Guu4tqqB2Z1H7L2PBNOzKprYqxYV8/dO4jjmVIGHoAbTjWj+zteRha3ks3+pG9GcFw4J6jneGJYMh1XUMzVK3Y7tQSrzkyhwnFG8M2GR4Jhv1a4jWHZvhJMAxridcc4hN/qDek7S7qh2gY6Q3riNYGouFcK7irI1obqLsn7dKb7atvVMNv1CmkZzHKUolX+Ka+6bk25e2UcQGDbhgoBDm/+maQES7fJHJ92F8wyeqXPTI4z6Bp7ckvEpw6DfBlDOuH0yXWBHYsasDT9DwOuRcPO3Z1/N5p11/M/GhDSSBmmAxdM+naGr7lMjwZPiPSI1/xwKkK23xp+LvDPZT+dPVXWqRcB3wNk3X3onjlMr2uygkpYbaGj/6E0fz591Pr1dxHAMZwlh5hGW5vH7nv+On5qFVkaljwmF8ul4UL8bh5Q4usfmgyviZZsw5ds87dK7SG+sphBn5dGTrDLzNBb1lj7DR0hjO9VBZ261SN4cBU0PNWdYZPQGNoLkiqI9aJ2lCTfiqG2X5RaUgpV+RhdrNRGlpNIbcKhtLQTpBZnU1lSKmLFsKqpVZlWNDyTEO3PK0VhaHpcuYBq8tUYWi4Ik3BqqSvMCS1mBTDaf2tMDTaNmXhVExUGI7sDTmtTRWGZ3vD97o1FCgMf6wFUe6lqhcs1JRmVvu+a/q5nKbK8N1SsLymb/svM8AsE6V+x6KMYakgw2zi1OJPqDZPlfvkMc2XBrl6oQ7lgcQulJ4wzwifjMYfqrPnTpyyWOS8Pwg9bVcmunNQHZrdsOtkj0nXqq9P0Mz6rpkZPS1SBF3NZnG34bSOSWNQ5T7E66K5nCzCzXPNjROmdfz31fYcj/a73T6MuvF5O+Y6dXfkTAV8xBAfMcRHDPERQ3zEEB8xxEcM8RFDfMQQHzHERwzxSQyZtYRWyvRiSDnjCZXBxZD1i7wvknz/IbO23kpZXgw9zsWj11h5iWF7v6YzvBqy6tOqkvv3AZPOk0Nkdzdk1mBfFUkX8LVDglNPaFUcvLRhCxWvgndD2iGrQNxfS3v08fRZH8xtSPB4sTDdqeS3ZZdx3KWsnnqxZuuoC07oZ0+urqPbrFnEEB8xxEcM8RFDfMQQHzHERwzxEUN8xBAfMcRHDPERQ3zEEB8xxEcM8RFDfMQQn/Yb/gdtpn6E7I7JsgAAAABJRU5ErkJggg=="
+                data-holder-rendered="true">
+            </div>
+          </div>
+          <div class="panel-footer">
+            <div class="row">
+
+              <center>
+                <!-- <input type="button" class="btn btn-success" id="file-ip-2"> -->
+                <!-- <button type="button"  id="file-ip-1">Upload Image</button> -->
+
+                <label class="btn btn-success" for="file-ip-1">Upload Image</label>
+                    <input type="file" class="btn btn-success" id="file-ip-1" accept="image/*" style="display: none;">
+
+              </center>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="item  col-xs-8 col-lg-8">
+
+        <div class="panel panel-success">
+          <div class="panel-heading">Extracted Data From RDS via Lambda</div>
+          <div class="panel-body">
+            <table class="table" id="table">
+              <thead>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date Of Birth</th>
+                <th>ID Type</th>
+                <th>Document Number</th>
+                <th>Expiration Date</th>
+                <th>State</th>
+              </thead>
+              <tbody></tbody>
+            </table>
+
+          </div>
+          <div class="panel-footer">
+            <div class="row">
+              <center>
+                <button type="button" class="btn btn-success" id="file-ip-2">View Text</button>
+                <!-- 
+							<button type="button" class="btn btn-success" id="file-ip-2" data-toggle="modal"
+								data-target="#exampleModal-4" data-whatever="@fat">Edit</button>
+
+              <button type="button" class="btn btn-success" id="file-ip-2" data-toggle="modal"
+								data-target="#exampleModal-4" data-whatever="@fat">Edit</button>  -->
+              </center>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="exampleModal-4" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+        aria-hidden="true" style="display: none;">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                <div class="panel-title">Edit details</div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="panel-body">
+                <form role="form" method="post" action="test" accept-charset="UTF-8">
+
+                  <label>First Name</label>
+                  <input type="text" id="fname" class="form-control" name="fname" placeholder="Enter First Name"
+                    required></br>
+                  <label>Last Name</label> <input type="text" id="lname" class="form-control" name="lname"
+                    placeholder="Enter Last Name" required></br>
+                  <label>Date Of Birth</label> <input type="date" id="DOB" class="form-control" name="DOB"
+                    placeholder="Enter Date of birth" required></br>
+                  <label>ID Type</label> <input type="text" id="idType" class="form-control" name="idType"
+                    placeholder="Enter ID Type" required></br>
+                  <label>Document Number</label> <input type="text" id="docNum" class="form-control" name="docNum"
+                    placeholder="Enter Document Number" required></br>
+                  <label>Expiration Date</label> <input type="date" id="expDate" class="form-control" name="expDate"
+                    placeholder="Enter Expiration Date" required></br>
+                  <!-- <label>Class</label> <input type="text" id="classType" class="form-control"
+										name="classType" placeholder="Enter Class" required></br> -->
+                  <label>State</label> <input type="text" id="state" class="form-control" name="state"
+                    placeholder="Enter State" required></br>
+
+                  <center>
+                    <!-- <input type="submit" class="btn btn-primary m-t-10" id="submitbtn" name="submit" value="Submit"> -->
+
+                    <button type="button" id="updateBtn" class="btn btn-primary m-t-10" data-dismiss="modal">
+                     Update
+                    </button>
+
+                  </center>
+                  </br>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="center">
+     <div class="form-input">
+        <div class="preview">
+          <img id="file-ip-1-preview">
+        </div>
+
+        <label for="file-ip-1">Upload Image</label>
+        <input type="file" id="file-ip-1" accept="image/*">
+      </div>
+
+      <div class="form-input">
+        <div id="data" class="preview">
+          <table id="table">
+            <thead>
+              <th>ID</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <label for="file-ip-2">Review text</label>
+        <input type="button" id="file-ip-2">
+
+      </div> -->
+
+
+  </div>
+  </div>
+<!-- 
+  <section hidden id="update-row">
+    <label class="label">First Name:</label>
+    <input type="text" id="update-name-input">
+    <button id="update-row-btn">Update</button>
+  </section> -->
+
+  <script src="index.js"></script>
+</body>
+
+</html>

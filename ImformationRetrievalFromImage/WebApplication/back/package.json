@@ -1,0 +1,22 @@
+{
+  "type": "module",
+  "dependencies": {
+    "aws-sdk": "^2.879.0",
+    "dotenv": "^8.6.0",
+    "express": "^4.17.3",
+    "mysql": "^2.18.1"
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "name": "back",
+  "version": "1.0.0",
+  "main": "server.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
